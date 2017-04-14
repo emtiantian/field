@@ -1,7 +1,7 @@
 ###穿山单风场API及接口说明
 # API说明
 1. 全部参数说明
-```json
+```js
 var defaults = {
 		fatherDiv:$(window),// 这里是用来根据父div 的宽高缩放 默认是根据页面整个的宽高
      	isdebugMsg : true, //是否打印测试值
@@ -34,7 +34,7 @@ var defaults = {
 # 接口说明
 1. 单风机数据接口说明
 	注：没有说明为可选 ， 类型：json数组 ，对应 data：参数
-``` json
+``` js
 [
     {
         "type": "sm",// 不同大小风机  默认为小号风机     sm 小号 ，me 中号 ，lg 大号 
@@ -54,7 +54,7 @@ var defaults = {
 ```
 2. 总览数据接口说明
 	注：均为必填项 ，类型： json，对应 titleData：参数
-``` json
+``` js
 {
     "name": "国电电力宁波穿山风电场", //风电场名称
     "a": "4500", //总装机容量
@@ -71,7 +71,7 @@ var defaults = {
 ```
 3. 风速表数据
 	注：没有说明为可选 ，类型： json，对应 speedData：参数
-```json
+```js
 {
     "x": "1300", // 风速表x位置
     "y": "550", // 风速表y位置
