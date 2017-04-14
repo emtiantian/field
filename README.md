@@ -4,8 +4,8 @@
 ```js
 var defaults = {
 		fatherDiv:$(window),// 这里是用来根据父div 的宽高缩放 默认是根据页面整个的宽高
-     	isdebugMsg : true, //是否打印测试值
-     	mainWidth : 1600, // 默认宽度
+    	isdebugMsg : true, //是否打印测试值
+    	mainWidth : 1600, // 默认宽度
 		mainHeight : 800, // 默认高度
 		background : "", //默认div背景颜色
 		tipBackground:"#FF9900",// 弹窗背景颜色
