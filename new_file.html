@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>穿山</title>
+		<link href="css/flexslider.css" type="text/css" rel="stylesheet" media="screen" />		
+		<link rel="stylesheet" href="css/tipso.min.css" />
+		<link href="css/field.css" type="text/css" rel="stylesheet" media="screen" />
+		<style>
+			html,body{
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			#preantDiv{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}	
+			/**/
+			/*.banner { position: relative; overflow: auto; }			 
+   			.banner li { list-style: none; }
+   			.banner ul { list-style: none; margin: 0;padding: 0;}
+        	.banner ul li { float: left; }*/
+		</style>
+	</head>
+	<body>
+		<div id="preantDiv">
+			<button id="update">点击获取位置信息</button>
+			<div id="main">	
+				
+			</div>
+		</div>	
+	</body>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/doT.js"></script>
+		<script src="js/jquery.flexslider-min.js"></script>
+		<script src="js/tipso.min.js"></script>
+		
+		<script src='js/move.min.js'></script>
+		<!--<script src="js/field.js"></script>-->
+		<script src="js/jsmartdrag.js"></script>
+		<script src="js/fieldFan.js"></script>
+		
+		<!--js 模板-->
+		<script id="j-tmpl" type="text/template">
+			{{ if(it.success){ }}
+			 {{##def.NA: NA#}}
+			 	{{ for (var i = 0, l = it.data.length; i < l; i++) { }}
+				    <div class="windeymill-div {{=it.data[i].type}}" style="top:{{=it.data[i].y}}px;left: {{=it.data[i].x}}px;" id="{{=it.data[i].code}}" offsetX="{{=it.data[i].offsetX}}" offsetY="{{=it.data[i].offsetY}}">
+				        <div class="windmill">
+							<!--<img class="windmill-base" src="img/windmill-base.png" alt="windmill base">
+							<img class="windmill-blades windmill-{{=it.data[i].windSpeed}}" src="img/windmill-blades.png" >-->
+							<img class="windmill-base" src="img/wind2.png" alt="windmill base">
+							<img class="windmill-blades windmill-{{=it.data[i].windSpeed}}" src="img/wind.png" >
+						</div>
+						<div class="windeymill-content">
+							<div class="windeymill-color {{=it.data[i].status}}"></div>
+							<div class="windeymill-code" id="code">{{=it.data[i].code}}</div>
+						</div>
+					</div>
+					<div class="windeymill-title" id="{{=it.data[i].code}}_content">
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name">
+								风机名称：
+							</div>
+							<div class="windeymill-title-num" id="content_code">
+								{{=it.data[i].code}}
+							</div>
+							<div class="windeymill-title-unit">
+								
+							</div>
+						</div>
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name">
+								风速：
+							</div>
+							<div class="windeymill-title-num" id="contend_speed">
+								{{=it.data[i].speed}}
+							</div>
+							<div class="windeymill-title-unit">
+								m/s
+							</div>
+						</div>
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name">
+								风轮转速：
+							</div>
+							<div class="windeymill-title-num" id="contend_windWheelSpeed">
+								{{=it.data[i].windWheelSpeed}}
+							</div>
+							<div class="windeymill-title-unit">
+								rpm
+							</div>
+						</div>
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name">
+								有功功率：
+							</div>
+							<div class="windeymill-title-num" id="contend_activePower">
+								{{=it.data[i].activePower}}
+							</div>
+							<div class="windeymill-title-unit">
+								kW
+							</div>
+						</div>
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name">
+								无功功率：
+							</div>
+							<div class="windeymill-title-num" id="contend_reactivePower">
+								{{=it.data[i].reactivePower}}
+							</div>
+							<div class="windeymill-title-unit">
+								kVar
+							</div>
+						</div>
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name">
+								电机转速：
+							</div>
+							<div class="windeymill-title-num" id="contend_motorSpeed">
+								{{=it.data[i].motorSpeed}}
+							</div>
+							<div class="windeymill-title-unit">
+								rpm
+							</div>
+						</div>
+						<div class="windeymill-title-content">
+							<div class="windeymill-title-name" >
+								总发电量：
+							</div>
+							<div class="windeymill-title-num" id="contend_powerGeneration">
+								{{=it.data[i].powerGeneration}}
+							</div>
+							<div class="windeymill-title-unit">
+								MWh
+							</div>
+						</div>
+					</div>
+			    {{ } }}
+			{{ }else{ }}
+			        <h2>暂无数据</h2>
+			{{ } }}
+		</script>
+		<script id="title-tmpl" type="text/template">
+					<div class="title" id="{{=it.data.name}}" style="top:{{=it.data.y}}px;left: {{=it.data.x}}px;">
+						<div class="title-content">
+							<div class="title-name">
+								风场名称：
+							</div>
+							<div class="title-num">
+								<span class="num" id="name">
+								{{=it.data.name}}
+								</span>
+							</div>
+							<div class="title-unit">
+								
+							</div>
+						</div>
+						<div class="title-content"><div class="title-name">总装机容量：</div><div class="title-num"><span id="a" class="num">{{=it.data.a}}</span><span class="title-unit" >kW</span></div></div>
+						<div class="title-content"><div class="title-name">总发电量：</div><div class="title-num"><span id="b"class="num">{{=it.data.b}}</span><span class="title-unit" >MWh</span></div></div>
+						<div class="title-content"><div class="title-name">当年总发电量：</div><div class="title-num"><span id="c"class="num">{{=it.data.c}}</span><span class="title-unit" >MWh</span></div></div>
+						<div class="title-content"><div class="title-name">有功功率：</div><div class="title-num"><span id="d"class="num">{{=it.data.d}}</span><span class="title-unit" >kW</span></div></div>
+						<div class="title-content"><div class="title-name">无功功率：</div><div class="title-num"><span id="e" class="num">{{=it.data.e}}</span><span class="title-unit" >kVar</span></div></div>
+						<div class="title-content"><div class="title-name">平均风速：</div><div class="title-num"><span id="f"class="num">{{=it.data.f}}</span><span class="title-unit" >m/s</span></div></div>
+						<div class="title-content"><div class="title-name">平均温度：</div><div class="title-num"><span id="g"class="num">{{=it.data.g}}</span><span class="title-unit" >&#8451;</span></div></div>
+						<div class="title-content"><div class="title-name">风机台数：</div><div class="title-num"><span id="h"class="num">{{=it.data.h}}</span><span class="title-unit" >台</span></div></div>
+						<div class="title-content"><div class="title-name">运行台数：</div><div class="title-num"><span id="i" class="num">{{=it.data.i}}</span><span class="title-unit" >台</span></div></div>
+						<div class="title-content"><div class="title-name">停机台数：</div><div class="title-num"><span id="j"class="num">{{=it.data.j}}</span><span class="title-unit" >台</span></div></div>
+					</div>			
+		</script>
+		<script id="speed-tmpl" type="text/template">
+			<div class="speedDiv" style="top:{{=it.y}}px;left:{{=it.x}}px;">
+			<div class="speed1"></div>
+			<div class="speed2"></div>
+			</div>
+		</script>
+	<script>		
+		$(function(){
+//
+//			var a = new field({
+//				"selector":"#main",
+//				"img":["img/windfarm_ningbo.png","img/windfarm_ningbo2.png"],
+//				"data":[
+//				{"type":"sm","x":"0","y":"450","code":"b0","status":"","windSpeed":"","speed":"","windWheelSpeed":"1","activePower":"2","reactivePower":"3","motorSpeed":"4","powerGeneration":"5"},
+//				{"type":"sm","x":"100","y":"480","code":"b1","status":"","windSpeed":"slow","speed":"20","windWheelSpeed":"11","activePower":"22","reactivePower":"33","motorSpeed":"44","powerGeneration":"55"},
+//				{"type":"sm","x":"200","y":"500","code":"b2","status":"","windSpeed":"fast","speed":"20","windWheelSpeed":"111","activePower":"222","reactivePower":"333","motorSpeed":"444","powerGeneration":"555"},
+//				{"type":"sm","x":"300","y":"550","code":"b3","status":"","windSpeed":"stop","speed":"20","windWheelSpeed":"111","activePower":"222","reactivePower":"333","motorSpeed":"444","powerGeneration":"555"}
+//				],
+//				"update":[{"type":"dataUpdate","url":"http://localhost:3000/data/windData","timer":"5000"},{"type":"titleUpdate","url":"http://localhost:3000/data/titleData","timer":"5001"},{"type":"speedUpdate","url":"http://localhost:3000/data/speedData","timer":"5002"}],
+//				"onclick":function(data){
+//					console.log($(data).attr("id"))
+//				},
+//				titleData:{"name":"国电电力宁波穿山风电场","a":"4500","b":"4500","c":"4500","d":"4500","e":"4500","f":"4500","g":"4500","h":"4500","i":"4500","j":"4500"},
+//				speedData:{"speed":20},
+//				type :"sm"
+//				
+//			});	
+  
+			//判断ajax 全部完成
+//			$.when($.ajax("http://localhost:3000/data/windData"), $.ajax("http://localhost:3000/data/titleData"),$.ajax("http://localhost:3000/data/speedData")).done(function(v1,v2,v3){
+//			    // 结束
+//			    var a = new field({
+//					"selector":"#main",
+//					"img":["img/windfarm_ningbo.png","img/windfarm_ningbo2.png"],
+//					"data":v1[0],
+//					//"update":[{"type":"dataUpdate","url":"http://localhost:3000/data/windData","timer":"5000"},{"type":"titleUpdate","url":"http://localhost:3000/data/titleData","timer":"5001"},{"type":"speedUpdate","url":"http://localhost:3000/data/speedData","timer":"5002"}],
+//					"onclick":function(data){
+//						console.log($(data).attr("id"))
+//					},
+//					titleData:v2[0],
+//					speedData:v3[0],								
+//				});	
+//				$("#update").on("click",function(){
+//					console.log(a.getPosition()) ;
+//				})
+//			})
+			$.when($.ajax("http://localhost:3000/data/data")).done(function(v1){
+				
+			    // 结束
+			    var a = new field({
+					"selector":"#main",
+					"img":["img/windfarm_ningbo.png","img/windfarm_ningbo2.png"],
+					"data":v1["data"],
+					//"update":[{"type":"dataUpdate","url":"http://localhost:3000/data/windData","timer":"5000"},{"type":"titleUpdate","url":"http://localhost:3000/data/titleData","timer":"5001"},{"type":"speedUpdate","url":"http://localhost:3000/data/speedData","timer":"5002"}],
+					"onclick":function(data){
+						console.log($(data).attr("id"))
+					},
+					titleData:v1["titleData"],
+					speedData:v1["speedData"],								
+				});	
+				$("#update").on("click",function(){
+					console.log(a.getPosition()) ;
+				})
+			})
+			
+			
+//			var $slider = "";
+//			$(window).load(function() {
+//				$('.flexslider').flexslider({
+//					animation: "slide",//滑动
+//					slideshow: false,
+//					directionNav: false,//左右按钮
+//					controlNav: false, //Boolean:  usage是否显示控制菜单
+//					keyboard: false, // 键盘控制
+//					start: function(slider) {
+//						$('body').removeClass('loading');
+//					}
+//				});
+//				$slider=$(".flexslider").data('flexslider');
+//			});
+//			$('#prev').click(function(){
+//				$slider.flexAnimate($slider.getTarget("prev"), true)
+//			});
+//			$('#next').click(function(){
+//				$slider.flexAnimate($slider.getTarget("next"), true)
+//			});
+			
+//			$(".windeymill-div").tipso({
+//				position:"top-right",
+//				offsetX : 40,
+//    			offsetY : 72,     
+////				offsetX : 50,
+////    			offsetY : 100,   
+////				offsetX : 90,
+////    			offsetY : 170,   
+//				onBeforeShow:function(ele,tipso){
+//					var resize = a.getResize();
+//					$(ele).tipso('update', 'offsetX', (resize.scale)*40);
+//					$(ele).tipso('update', 'offsetY',(resize.scale)*72);
+//					$(ele).tipso('update', 'content', "111111111111111111</br>111111111111111111</br>111111111111111111</br>111111111111111111</br>111111111111111111</br>");
+//					
+//				},
+//				tooltipHover: true
+//			})
+			//me 50 100
+			//sm 40 80
+			//lg 50 175
+			//动画测试
+			//move('.speed2').rotate(390).duration('10s').end();
+		})
+	    
+	</script>
+</html>

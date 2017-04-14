@@ -1,0 +1,14 @@
+{
+  "name": "testmap",
+  "version": "1.0.0",
+  "description": "测试map接口",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "郝赫",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1"
+  }
+}

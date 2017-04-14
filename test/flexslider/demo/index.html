@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+	<title>FlexSlider 2</title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <!-- Demo CSS -->
+	<link rel="stylesheet" href="css/demo.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../flexslider.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="http://www.yyyweb.com/demo/common/init.css">
+  <style>
+    #main {
+      margin-left: 260px;
+      margin-right: 260px;
+    }
+    #container {
+      padding: 60px 40px 0px;
+    }    
+  </style>
+	<!-- Modernizr -->
+  <script src="js/modernizr.js"></script>
+
+</head>
+<body class="loading">
+
+  <div id="container" class="cf">
+
+	<div id="main" role="main">
+      <section class="slider">
+        <div class="flexslider">
+          <ul class="slides">
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+  </div>
+  <div class="footer-banner" style="width:728px; margin:0px auto"></div>
+  <script src="http://www.yyyweb.com/demo/common/jquery.min.js"></script>
+  <script src="http://www.yyyweb.com/demo/common/init.js"></script>
+
+  <!-- FlexSlider -->
+  <script defer src="../jquery.flexslider.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Syntax Highlighter -->
+  <script type="text/javascript" src="js/shCore.js"></script>
+  <script type="text/javascript" src="js/shBrushXml.js"></script>
+  <script type="text/javascript" src="js/shBrushJScript.js"></script>
+
+  <!-- Optional FlexSlider Additions -->
+  <script src="js/jquery.easing.js"></script>
+  <script src="js/jquery.mousewheel.js"></script>
+  <script defer src="js/demo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+/*字体设置*/
+body{
+	font-family:arial, "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif;
+	 
+}
+/*轮播图按钮*/ 
+	.left {
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-top: 20px solid transparent;
+		border-right: 40px solid #FFFfff;
+		border-bottom: 20px solid transparent;
+		margin-right: 5px;
+	}
+	
+	.right {
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-top: 20px solid transparent;
+		border-left: 40px solid #FFFfff;
+		border-bottom: 20px solid transparent;
+	}
+	
+	.bannerButton {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+	}
+	/*风机动画*/
+	.windmill-lg{
+        height: 200px;
+	    position: absolute;
+	    width: 131px;
+	}
+	.windmill {
+		position: absolute;
+		height: 100px;	  
+	    width: 65px;
+	}
+	
+	.windmill .windmill-base{
+		width: 50%;	
+	    left: 28px;
+	    top: 33px;
+	}
+	
+	.windmill-sm {
+		position: absolute;
+		height: 80px;	  
+	    width: 53px;
+	}
+	.windmill-sm .windmill-base{
+		width: 40%;	
+		left: 22px;
+	    top: 28px;
+	}
+	
+	.windmill-base{
+		position: absolute;
+	    left: 59px;
+	    top: 66px;
+	}
+	.windmill-blades{
+		width: 100%;
+	    text-align: center;
+	    overflow: hidden;
+	    display: inline-block;
+	    position: relative;
+	    -webkit-animation: aLinear 4s linear 0s infinite normal;
+	    -o-animation: aLinear 4s linear 0s infinite normal;
+	    animation: aLinear 4s linear 0s infinite normal;
+	}
+	.windmill-fast{
+		-webkit-animation: aLinear 1s linear 0s infinite normal;
+	    -o-animation: aLinear 1s linear 0s infinite normal;
+	    animation: aLinear 1s linear 0s infinite normal;
+	}
+	.windmill-slow
+	{
+		-webkit-animation: aLinear 25s linear 0s infinite normal;
+	    -o-animation: aLinear 25s linear 0s infinite normal;
+	    animation: aLinear 25s linear 0s infinite normal;
+	}
+	.windmill-stop{
+		-webkit-animation: none;
+	    -o-animation: none;
+	    animation: none;
+	}
+  	@keyframes aLinear {
+	    from {
+	        -webkit-transform: rotate(-360deg);
+	        -moz-transform: rotate(-360deg);
+	        -ms-transform: rotate(-360deg);
+	        -o-transform: rotate(-360deg);
+	        transform: rotate(-360deg);
+			
+	      
+	    }
+	    to {
+	        -webkit-transform: rotate(0deg);
+	        -moz-transform: rotate(0deg);
+	        -ms-transform: rotate(0deg);
+	        -o-transform: rotate(0deg);
+	        transform: rotate(0deg);
+	    	
+	       
+	    }
+	}
+/*风机说明*/
+	.windeymill-color{
+		width: 100%;	
+		height: 4px;	
+	}
+	.yellow{
+		background-color: #FFCC00;
+	}
+	.grey{
+		background-color: #cccccc;
+	}
+	.green{
+		background-color: #6CE26C;
+	}
+	.red{
+		background-color: #FF6666;
+	}
+	.windeymill-code{
+		text-align: center;
+		font-weight:bold;
+		font-family: "微软雅黑";
+	}
+	.windeymill-div{
+		position: absolute;
+		
+	}
+	.windeymill-content{
+		position: absolute;
+		background: #FFFFFF;
+	}
+	/*小尺寸*/
+	.sm .windeymill-content{
+		width: 30px;
+		top: 70px;
+		/*left: 9px;*/
+		left: 5px;
+	}
+	.sm .windmill {
+		position: absolute;
+		height: 80px;	  
+	    width: 53px; 
+	}
+	.sm .windmill-base{
+		width: 40%;	
+		/*left: 22px;*/
+	    /*top: 28px;*/
+	   left: 7px;
+	   top: 24px;
+	   height: 70px;
+	}
+	/*中尺寸*/
+	.me .windeymill-content{
+		width: 40px;
+		top: 105px;
+		left: 11px;
+	}
+	.me .windmill {
+		position: absolute;
+		height: 100px;	  
+	    width: 65px;
+	}
+	.me .windmill-base{
+		width: 50%;	
+	    left: 27px; 
+	    top: 33px;
+	}
+	/*大尺寸*/
+	.lg .windeymill-content{
+		width: 50px;
+		top: 170px;
+		left: 40px;
+	}
+	.lg .windmill {
+		height: 200px;
+	    position: absolute;
+	    width: 131px;
+	}
+	.lg .windmill-base{
+		position: absolute;	
+		width: auto;	
+	    left: 59px;
+	    top: 66px;
+	}
+	/*提示框内容*/
+	.windeymill-title{
+		display: none;
+	}
+	.windeymill-title-content{
+		color: #000000;
+		font-weight: bold;
+		margin: 5px 0px;
+		font-size:14px;	
+	}
+	.windeymill-title-name{
+		width: 80px;
+		text-align: right;
+		display: inline-block;
+	}
+	.windeymill-title-num{
+		/*width: 80px;*/
+		display: inline-block;
+	}
+	.windeymill-title-unit{
+		/*width: 40px;*/
+		text-align: left;
+		display: inline-block;
+	}	
+	/*标题*/
+	.title{
+		position: absolute;	
+		border-radius: 10px;
+    	color: #FFFFFF;
+        background-image:  url(../img/titleBackground.png);
+		filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	    -moz-background-size:100% 100%;
+	    background-size:100% 100%;
+	}
+	.title-content{		
+		margin: 10px 0px;
+		margin: 9px 0px\9;/*ie 6-10*/
+
+	}
+	@media all and (-ms-high-contrast:none)
+     {
+     .title-content{margin: 9px 0px;	}/* IE10 */
+     *::-ms-backdrop, .title-content { margin: 9px 0px;} /* IE11 */
+     }
+
+	.title-name{
+		width: 120px;
+		text-align: right;
+		display: inline-block;
+		backface-visibility: hidden;
+		transform: translate3d(0, 0, 0);
+		
+	}
+	.title-num{	
+		width: 250px;
+		display: inline-block;
+		color: #C3D954;
+		font-size: 16px;
+		font-weight: bold;
+		text-align: center;
+		backface-visibility: hidden;
+		transform: translate3d(0, 0, 0);
+	}
+	.title-unit{
+		display: inline-block;
+		color: #C3D954;
+		font-weight: bold;
+	}
+	/*风速表*/
+	.speedDiv{
+		position: absolute;
+		
+	}
+	.speed1{
+		width: 230px;
+		height: 207px;
+		background-image: url(../img/speed1.png);
+		filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	    -moz-background-size:100% 100%;
+	    background-size:100% 100%;
+	}
+	.speed2{
+		position: absolute;
+		top: 36px;
+		left: 102px;
+		width: 30px;
+		height: 83px;
+		background-image: url(../img/speed2.png);
+		filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	    -moz-background-size:100% 100%;
+	    background-size:100% 100%;
+	    
+	    -moz-transform-origin:17px 65px;
+		-webkit-transform-origin:17px 65px;
+		-o-transform-origin:17px 65px;
+		transform-origin:17px 65px;
+	    /*transform:rotate(30deg);*/
+	}
+/*重设提示框样*/
+	.tipso_content{
+		padding: 0;
+		text-align: left;
+		
+	}
