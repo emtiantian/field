@@ -4,9 +4,7 @@
  * http://tipso.object505.com
  * Licensed under the MIT license
  * http://object505.mit-license.org/
- * 添加标签跟随鼠标移动  
  */
-//TODO 第一次 获取鼠标位置的时候 获取不到 第 824行
 (function(factory) {
 	if (typeof define === "function" && define.amd) {
 		define(["jquery"], factory)
@@ -188,7 +186,7 @@
 						tipso_bubble.appendTo("body").stop(true, true).fadeIn(obj.settings.speed, function() {
 							obj.mode = "show";
 							if ($.isFunction(obj.settings.onShow)) {
-								obj.settings.onShow(obj.$element, obj.element, obj)
+							//	obj.settings.onShow(obj.$element, obj.element, obj)
 							}
 						})
 					} else {
@@ -821,26 +819,20 @@
 		}
 		
 		if(obj.settings.onMouseMove){
-    	var mousePos = mousePosition(e)
-//  	$(document).mousemove(function(e){
-//      	mousePos= mousePosition(e);
-//      	tipso_bubble.css({
-//		      left: pos_left + mousePos.x +10,
-//		      top: pos_top + mousePos.y +10
-//		    });
-//  	});   	
-//  	console.log("1"+":"+mousePos.x+":"+mousePos.y+"height"+obj.settings.onMouseMoveY);
-    	tipso_bubble.css({
-	      left: mousePos.x  +offsetObj.x,
-	      top: mousePos.y  - obj.settings.onMouseMoveY +offsetObj.y
-	    });
-	    obj.$element.on("mousemove",function(e){
-	    	var mousePos= mousePosition(e)
-//			console.log("2"+":"+mousePos.x+":"+mousePos.y+"height"+tipso_bubble.height());
+//  	var mousePos = mousePosition(e)
+//  	tipso_bubble.css({
+//	      left: mousePos.x  +offsetObj.x,
+//	      top: mousePos.y  - obj.settings.onMouseMoveY +offsetObj.y
+//	    });
+//		tipso_bubble.hide();
+		console.log("hide");
+	    $win.on("mousemove",function(e){
+	    	var mousePos= mousePosition(e)	    	
 			tipso_bubble.css({
 		      left: mousePos.x + offsetObj.x, 
 		      top:  mousePos.y - obj.settings.onMouseMoveY +offsetObj.y
 		    });
+		    tipso_bubble.show();
 		})
     }else{
     	tipso_bubble.css({
